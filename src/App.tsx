@@ -6,22 +6,59 @@
 import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import ArtisticPhilosophy from './components/ArtisticPhilosophy';
+import CollectionsOverview from './components/CollectionsOverview';
 import Gallery from './components/Gallery';
+import SymbolGuide from './components/SymbolGuide';
+import ArtistJournal from './components/ArtistJournal';
 import PaletteExplorer from './components/PaletteExplorer';
 import Exhibitions from './components/Exhibitions';
 import About from './components/About';
 import Contact from './components/Contact';
 import { ArrowUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Artwork } from './types';
 
 export default function App() {
-  const [activeSection, setActiveSection] = useState('gallery');
+  const [activeSection, setActiveSection] = useState('philosophy');
+  const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [prefilledArtwork, setPrefilledArtwork] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('theme') as 'dark' | 'light') || 'dark';
+    }
+    return 'dark';
+  });
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'light') {
+      root.classList.add('light');
+    } else {
+      root.classList.remove('light');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
   // Monitor active scrolled section using IntersectionObserver API
   useEffect(() => {
-    const sections = ['gallery', 'palette', 'exhibitions', 'about', 'contact'];
+    const sections = [
+      'philosophy',
+      'collections',
+      'gallery',
+      'symbols',
+      'journal',
+      'palette',
+      'exhibitions',
+      'about',
+      'contact'
+    ];
     const observers = sections.map((id) => {
       const element = document.getElementById(id);
       if (!element) return null;
@@ -69,26 +106,42 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-cream overflow-x-hidden selection:bg-sand selection:text-charcoal font-sans text-charcoal">
+    <div className="relative min-h-screen bg-sand overflow-x-hidden selection:bg-gold selection:text-charcoal font-sans text-charcoal">
       {/* 1. Header Navigation with Scroll Progress and Mobile Menu Drawer */}
-      <Navbar activeSection={activeSection} />
+      <Navbar activeSection={activeSection} theme={theme} onToggleTheme={toggleTheme} />
 
       {/* 2. Visual Masterpiece Hero Showcase */}
       <Hero />
 
-      {/* 3. Core Curated Interactive Filterable Fine Art Gallery & Detail Simulator */}
-      <Gallery onSelectArtworkForInquiry={handleSelectArtworkForInquiry} />
+      {/* 3. Long-form exploration of Elena Rostova's worldview and creative process */}
+      <ArtisticPhilosophy />
 
-      {/* 4. Interactive Palette Swatches Explorer (Color symbolism) */}
+      {/* 4. bento-grid bento/ledger collection category overview */}
+      <CollectionsOverview onOpenArtwork={setSelectedArtwork} />
+
+      {/* 5. Core Curated Interactive Filterable Fine Art Gallery & Detail Simulator */}
+      <Gallery
+        onSelectArtworkForInquiry={handleSelectArtworkForInquiry}
+        selectedArtwork={selectedArtwork}
+        setSelectedArtwork={setSelectedArtwork}
+      />
+
+      {/* 6. Interactive symbol guide and encyclopedia mapping */}
+      <SymbolGuide onOpenArtwork={setSelectedArtwork} />
+
+      {/* 7. Artist Journal containing reflective diaries and essays */}
+      <ArtistJournal />
+
+      {/* 8. Interactive Palette Swatches Explorer (Color symbolism) */}
       <PaletteExplorer />
 
-      {/* 5. Elegant Exhibition Timelines */}
+      {/* 9. Elegant Exhibition Timelines */}
       <Exhibitions />
 
-      {/* 6. Biography & Studio Philosophy Tabs */}
+      {/* 10. Biography & Studio Philosophy Tabs */}
       <About />
 
-      {/* 7. Transmission Inquiries Form */}
+      {/* 11. Transmission Inquiries Form */}
       <Contact prefilledArtwork={prefilledArtwork} onClearPrefill={handleClearPrefill} />
 
       {/* Elegant, High-contrast Fine Art Footer */}

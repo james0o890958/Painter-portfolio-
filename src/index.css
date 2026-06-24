@@ -1,16 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap');
 @import "tailwindcss";
 
+:root {
+  /* Default: Dark Theme */
+  --theme-cream: #0a0a0a;
+  --theme-sand: #080808;
+  --theme-charcoal: #e5e5e5;
+  --theme-ink: #ffffff;
+  --theme-gold: #c5a47e;
+  
+  --theme-bg-card: #0d0d0d;
+  --theme-bg-card-hover: #121212;
+  --theme-bg-card-darker: #0c0c0c;
+  --theme-bg-card-journal: #101010;
+  --theme-bg-input: #151515;
+  
+  --theme-border-subtle: rgba(255, 255, 255, 0.05);
+  --theme-border-medium: rgba(255, 255, 255, 0.1);
+  --theme-border-accent: rgba(197, 164, 126, 0.15);
+}
+
+:root.light {
+  /* Light Theme Override */
+  --theme-cream: #fdfbf7;
+  --theme-sand: #faf8f5;
+  --theme-charcoal: #1c1c1c;
+  --theme-ink: #0a0a0a;
+  --theme-gold: #b38f5a;
+  
+  --theme-bg-card: #ffffff;
+  --theme-bg-card-hover: #fcf9f2;
+  --theme-bg-card-darker: #f5f1e8;
+  --theme-bg-card-journal: #fbf9f5;
+  --theme-bg-input: #f5f1e8;
+  
+  --theme-border-subtle: rgba(0, 0, 0, 0.06);
+  --theme-border-medium: rgba(0, 0, 0, 0.12);
+  --theme-border-accent: rgba(179, 149, 90, 0.25);
+}
+
 @theme {
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   
-  --color-cream: #0a0a0a;
-  --color-sand: #151515;
-  --color-charcoal: #e5e5e5;
-  --color-ink: #ffffff;
-  --color-gold: #c5a47e;
+  --color-cream: var(--theme-cream);
+  --color-sand: var(--theme-sand);
+  --color-charcoal: var(--theme-charcoal);
+  --color-ink: var(--theme-ink);
+  --color-gold: var(--theme-gold);
+  
+  --color-card-bg: var(--theme-bg-card);
+  --color-card-hover: var(--theme-bg-card-hover);
+  --color-card-darker: var(--theme-bg-card-darker);
+  --color-card-journal: var(--theme-bg-card-journal);
+  --color-input-bg: var(--theme-bg-input);
+  
+  --color-border-subtle: var(--theme-border-subtle);
+  --color-border-medium: var(--theme-border-medium);
+  --color-border-accent: var(--theme-border-accent);
 }
 
 ::selection {

@@ -109,7 +109,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.3 }}
-            className="relative border-[16px] border-[#121212] shadow-2xl overflow-hidden aspect-[3/2] w-full"
+            className="relative border-[16px] border-card-hover shadow-2xl overflow-hidden aspect-[3/2] w-full"
           >
             <motion.img
               id="hero-featured-image"

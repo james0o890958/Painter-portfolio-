@@ -81,7 +81,7 @@ export default function PaletteExplorer() {
             </div>
 
             {/* Philosophy Artist Quote Box */}
-            <div className="border-l-2 border-gold pl-6 py-4 bg-[#0d0d0d]/40 border border-white/5 shadow-sm pr-4 mt-4 relative">
+            <div className="border-l-2 border-gold pl-6 py-4 bg-card-bg/40 border border-border-subtle shadow-sm pr-4 mt-4 relative">
               <span className="font-serif text-5xl text-gold/20 absolute -top-4 left-2 pointer-events-none select-none">
                 &ldquo;
               </span>
@@ -105,7 +105,7 @@ export default function PaletteExplorer() {
           </div>
 
           {/* Symbolism Breakdown & Curated Paintings (Right - 7 Cols) */}
-          <div className="lg:col-span-7 bg-[#0d0d0d] p-8 md:p-12 border border-white/5 shadow-sm flex flex-col justify-between min-h-[420px]">
+          <div className="lg:col-span-7 bg-card-bg p-8 md:p-12 border border-border-subtle shadow-sm flex flex-col justify-between min-h-[420px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeColor.id}
@@ -149,7 +149,7 @@ export default function PaletteExplorer() {
                             window.scrollTo({ top: gallerySec.offsetTop - 80, behavior: 'smooth' });
                           }
                         }}
-                        className="group flex items-center space-x-4 p-3 bg-sand/35 border border-white/5 hover:bg-[#121212] hover:shadow-md transition-all duration-300 cursor-pointer"
+                        className="group flex items-center space-x-4 p-3 bg-sand border border-border-subtle hover:bg-card-hover hover:shadow-md transition-all duration-300 cursor-pointer"
                       >
                         {/* Miniature painting thumbnail */}
                         <div className="w-14 h-14 overflow-hidden border border-sand/50 shrink-0 aspect-square">

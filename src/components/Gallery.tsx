@@ -6,14 +6,16 @@ import { Artwork } from '../types';
 
 interface GalleryProps {
   onSelectArtworkForInquiry: (title: string) => void;
+  selectedArtwork: Artwork | null;
+  setSelectedArtwork: (artwork: Artwork | null) => void;
 }
 
-export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
+export default function Gallery({ onSelectArtworkForInquiry, selectedArtwork, setSelectedArtwork }: GalleryProps) {
   const [filter, setFilter] = useState<string>('all');
-  const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [likedArtworks, setLikedArtworks] = useState<Record<string, boolean>>({});
   const [viewInRoom, setViewInRoom] = useState<boolean>(false);
   const [roomColor, setRoomColor] = useState<string>('charcoal'); // charcoal, sand, sage, crimson
+  const [detailTab, setDetailTab] = useState<'curatorial' | 'reflection' | 'heritage'>('curatorial');
 
   const categories = [
     { name: 'All Collection', value: 'all' },
@@ -57,10 +59,13 @@ export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
   };
 
   return (
-    <section id="gallery" className="py-24 bg-cream relative">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section id="gallery" className="py-24 bg-cream relative overflow-hidden">
+      {/* Background Subtle Fine Art Blueprint Grid */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(197,164,126,0.02)_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Header Title */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-sand pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-border-subtle pb-8">
           <div>
             <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-gold">
               The Virtual Gallery
@@ -81,10 +86,10 @@ export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
               key={cat.value}
               id={`filter-btn-${cat.value}`}
               onClick={() => setFilter(cat.value)}
-              className={`relative px-5 py-2 text-[11px] tracking-widest uppercase transition-all duration-300 focus:outline-none cursor-pointer ${
+              className={`relative px-5 py-2.5 text-[11px] tracking-widest uppercase transition-all duration-300 focus:outline-none cursor-pointer border ${
                 filter === cat.value
-                  ? 'text-cream'
-                  : 'text-charcoal/60 hover:text-charcoal bg-sand/30 hover:bg-sand/60'
+                  ? 'text-[#0a0a0a] border-gold font-medium'
+                  : 'text-charcoal/60 hover:text-charcoal bg-card-bg/10 border-border-subtle hover:border-border-medium'
               }`}
             >
               <span className="relative z-10">{cat.name}</span>
@@ -92,7 +97,7 @@ export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
                 <motion.div
                   id={`filter-active-pill-${cat.value}`}
                   layoutId="activeFilterBg"
-                  className="absolute inset-0 bg-charcoal"
+                  className="absolute inset-0 bg-gold"
                   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 />
               )}
@@ -117,7 +122,7 @@ export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5 }}
                 onClick={() => openArtworkDetail(artwork)}
-                className="group flex flex-col bg-[#0d0d0d] border border-white/5 hover:shadow-xl transition-shadow duration-500 cursor-pointer overflow-hidden relative"
+                className="group flex flex-col bg-card-bg border border-border-subtle hover:shadow-xl transition-shadow duration-500 cursor-pointer overflow-hidden relative"
               >
                 {/* Artwork Thumbnail Image */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-sand/20">
@@ -163,7 +168,7 @@ export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
                 </div>
 
                 {/* Info Details Footer */}
-                <div className="p-6 flex flex-col justify-between flex-grow">
+                <div className="p-6 flex flex-col justify-between flex-grow bg-card-darker border-t border-border-subtle">
                   <div>
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-[9px] text-gold tracking-widest uppercase">
@@ -179,8 +184,8 @@ export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
                     </p>
                   </div>
 
-                  <div className="border-t border-sand/50 mt-4 pt-4 flex items-center justify-between">
-                    <span className="font-mono text-xs text-charcoal font-medium">
+                  <div className="border-t border-border-subtle mt-4 pt-4 flex items-center justify-between">
+                    <span className="font-mono text-xs text-gold font-medium">
                       {artwork.price}
                     </span>
                     <span className="text-[10px] font-mono tracking-widest uppercase text-gold hover:text-charcoal transition-colors duration-300 flex items-center space-x-1">
@@ -206,7 +211,7 @@ export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedArtwork(null)}
-              className="absolute inset-0 bg-[#0d0d0d]/85 backdrop-blur-md"
+              className="absolute inset-0 bg-card-bg/85 backdrop-blur-md"
             />
 
             {/* Modal Body Window */}
@@ -240,7 +245,7 @@ export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
-                        className="relative border-[12px] border-[#121212] shadow-lg max-w-[90%] max-h-[380px]"
+                        className="relative border-[12px] border-card-hover shadow-lg max-w-[90%] max-h-[380px]"
                       >
                         <img
                           id="modal-artwork-image"
@@ -327,7 +332,7 @@ export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
                 </div>
 
                 {/* Simulator Mode Toggler */}
-                <div className="border-t border-sand flex divide-x divide-sand bg-[#0d0d0d] z-10 h-12">
+                <div className="border-t border-sand flex divide-x divide-sand bg-card-bg z-10 h-12">
                   <button
                     id="artwork-frame-mode"
                     onClick={() => setViewInRoom(false)}
@@ -386,14 +391,136 @@ export default function Gallery({ onSelectArtworkForInquiry }: GalleryProps) {
                     </div>
                   </div>
 
-                  {/* Curatorial Statement & Artist's Personal Story */}
-                  <div className="mt-6">
-                    <p className="font-mono text-[8px] text-gold uppercase tracking-[0.25em] font-medium">
-                      Artist's Curatorial Story
-                    </p>
-                    <p className="font-sans text-[13px] text-charcoal/70 font-light mt-2 leading-relaxed italic">
-                      &ldquo;{selectedArtwork.story}&rdquo;
-                    </p>
+                  {/* Interactive Sub-tab Selector */}
+                  <div className="mt-6 flex border-b border-sand/40">
+                    <button
+                      id="modal-tab-curatorial"
+                      onClick={() => setDetailTab('curatorial')}
+                      className={`pb-2.5 text-[9px] font-mono uppercase tracking-widest border-b-2 cursor-pointer transition-all mr-4 focus:outline-none ${
+                        detailTab === 'curatorial' ? 'border-gold text-gold font-medium' : 'border-transparent text-charcoal/50 hover:text-charcoal'
+                      }`}
+                    >
+                      Curatorial Notes
+                    </button>
+                    <button
+                      id="modal-tab-reflection"
+                      onClick={() => setDetailTab('reflection')}
+                      className={`pb-2.5 text-[9px] font-mono uppercase tracking-widest border-b-2 cursor-pointer transition-all mr-4 focus:outline-none ${
+                        detailTab === 'reflection' ? 'border-gold text-gold font-medium' : 'border-transparent text-charcoal/50 hover:text-charcoal'
+                      }`}
+                    >
+                      Reflection & Symbolism
+                    </button>
+                    <button
+                      id="modal-tab-heritage"
+                      onClick={() => setDetailTab('heritage')}
+                      className={`pb-2.5 text-[9px] font-mono uppercase tracking-widest border-b-2 cursor-pointer transition-all focus:outline-none ${
+                        detailTab === 'heritage' ? 'border-gold text-gold font-medium' : 'border-transparent text-charcoal/50 hover:text-charcoal'
+                      }`}
+                    >
+                      Provenance & Palette
+                    </button>
+                  </div>
+
+                  {/* Sub-tab Content Panels */}
+                  <div className="mt-5 min-h-[140px] flex flex-col justify-between">
+                    <AnimatePresence mode="wait">
+                      {detailTab === 'curatorial' && (
+                        <motion.div
+                          key="curatorial-tab"
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          transition={{ duration: 0.3 }}
+                          className="space-y-3"
+                        >
+                          <div>
+                            <p className="font-mono text-[8px] text-gold uppercase tracking-widest font-medium">Curator narrative</p>
+                            <p className="font-sans text-xs text-charcoal/80 leading-relaxed font-light italic mt-1 bg-sand/10 p-3 border border-sand/30">
+                              &ldquo;{selectedArtwork.storyBehindPainting || selectedArtwork.story}&rdquo;
+                            </p>
+                          </div>
+                          {selectedArtwork.inspirationNotes && (
+                            <div>
+                              <p className="font-mono text-[8px] text-gold uppercase tracking-widest font-medium">Inspiration Sparks</p>
+                              <p className="font-sans text-[11px] text-charcoal/70 leading-relaxed font-light mt-0.5">
+                                {selectedArtwork.inspirationNotes}
+                              </p>
+                            </div>
+                          )}
+                        </motion.div>
+                      )}
+
+                      {detailTab === 'reflection' && (
+                        <motion.div
+                          key="reflection-tab"
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          transition={{ duration: 0.3 }}
+                          className="space-y-3"
+                        >
+                          {selectedArtwork.artistReflection && (
+                            <div>
+                              <p className="font-mono text-[8px] text-gold uppercase tracking-widest font-medium">Artist's Personal Reflection</p>
+                              <p className="font-sans text-xs text-charcoal/80 leading-relaxed font-light mt-1">
+                                {selectedArtwork.artistReflection}
+                              </p>
+                            </div>
+                          )}
+                          {selectedArtwork.symbolAnalysis && (
+                            <div>
+                              <p className="font-mono text-[8px] text-gold uppercase tracking-widest font-medium">Symbolic Motifs</p>
+                              <p className="font-sans text-[11px] text-charcoal/70 leading-relaxed font-light mt-0.5 border-l-2 border-gold/40 pl-3">
+                                {selectedArtwork.symbolAnalysis}
+                              </p>
+                            </div>
+                          )}
+                        </motion.div>
+                      )}
+
+                      {detailTab === 'heritage' && (
+                        <motion.div
+                          key="heritage-tab"
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          transition={{ duration: 0.3 }}
+                          className="space-y-3"
+                        >
+                          {selectedArtwork.colorPaletteInfo && (
+                            <div>
+                              <p className="font-mono text-[8px] text-gold uppercase tracking-widest font-medium">Pigment Composition</p>
+                              <p className="font-sans text-[11px] text-charcoal/70 leading-relaxed font-light mt-0.5">
+                                {selectedArtwork.colorPaletteInfo}
+                              </p>
+                            </div>
+                          )}
+                          {selectedArtwork.exhibitionHistory && selectedArtwork.exhibitionHistory.length > 0 && (
+                            <div>
+                              <p className="font-mono text-[8px] text-gold uppercase tracking-widest font-medium">Exhibition Chronology</p>
+                              <ul className="list-disc pl-4 text-[11px] text-charcoal/70 font-light space-y-0.5 mt-1">
+                                {selectedArtwork.exhibitionHistory.map((exh, i) => (
+                                  <li key={i}>{exh}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          {selectedArtwork.relatedWorks && selectedArtwork.relatedWorks.length > 0 && (
+                            <div>
+                              <p className="font-mono text-[8px] text-gold uppercase tracking-widest font-medium">Related Motifs & Sequels</p>
+                              <div className="flex flex-wrap gap-1.5 mt-1">
+                                {selectedArtwork.relatedWorks.map((work, i) => (
+                                  <span key={i} className="bg-sand/30 border border-sand text-[9px] font-mono px-2 py-0.5 rounded-none text-charcoal/80">
+                                    {work}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
 

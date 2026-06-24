@@ -23,7 +23,7 @@ export default function About() {
             <div className="absolute inset-0 border border-gold translate-x-4 translate-y-4 -z-10" />
 
             {/* Main Studio Frame */}
-            <div className="relative border-[12px] border-[#121212] shadow-xl overflow-hidden aspect-square w-full">
+            <div className="relative border-[12px] border-card-hover shadow-xl overflow-hidden aspect-square w-full">
               <img
                 id="about-studio-image"
                 src={ARTIST_BIOGRAPHY.studio}
@@ -72,7 +72,7 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className="flex flex-col p-4 bg-[#0d0d0d]/80 border border-white/5 rounded-none hover:bg-[#0d0d0d] transition-all duration-300"
+                    className="flex flex-col p-4 bg-card-bg/80 border border-border-subtle rounded-none hover:bg-card-bg transition-all duration-300"
                   >
                     <span className="font-mono text-[10px] text-gold">{award.year}</span>
                     <span className="font-serif text-sm text-charcoal font-medium mt-1 leading-tight">
@@ -112,8 +112,8 @@ export default function About() {
                     onClick={() => setActiveMethod(index)}
                     className={`p-5 text-left border transition-all duration-300 focus:outline-none flex items-center justify-between cursor-pointer ${
                       isActive
-                        ? 'bg-[#0d0d0d] border-gold text-charcoal shadow-sm'
-                        : 'bg-transparent border-white/5 text-charcoal/60 hover:border-white/10 hover:text-charcoal'
+                        ? 'bg-card-bg border-gold text-charcoal shadow-sm'
+                        : 'bg-transparent border-border-subtle text-charcoal/60 hover:border-border-medium hover:text-charcoal'
                     }`}
                   >
                     <div className="flex items-center space-x-3">
@@ -127,7 +127,7 @@ export default function About() {
             </div>
 
             {/* Tab content display (Right - 8 Cols) */}
-            <div className="lg:col-span-8 bg-[#0d0d0d] p-8 md:p-10 border border-white/5 shadow-sm min-h-[180px] flex flex-col justify-center">
+            <div className="lg:col-span-8 bg-card-bg p-8 md:p-10 border border-border-subtle shadow-sm min-h-[180px] flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeMethod}

@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
 
 interface NavbarProps {
   activeSection: string;
+  theme: 'dark' | 'light';
+  onToggleTheme: () => void;
 }
 
-export default function Navbar({ activeSection }: NavbarProps) {
+export default function Navbar({ activeSection, theme, onToggleTheme }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -28,7 +30,11 @@ export default function Navbar({ activeSection }: NavbarProps) {
   }, []);
 
   const navItems = [
+    { name: 'Philosophy', id: 'philosophy' },
+    { name: 'Collections', id: 'collections' },
     { name: 'Gallery', id: 'gallery' },
+    { name: 'Symbols', id: 'symbols' },
+    { name: 'Journal', id: 'journal' },
     { name: 'Palette', id: 'palette' },
     { name: 'Exhibitions', id: 'exhibitions' },
     { name: 'About', id: 'about' },
@@ -111,7 +117,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
               </motion.button>
             ))}
 
-            {/* Inquire CTA */}
+             {/* Inquire CTA */}
             <motion.button
               id="nav-inquire-cta"
               onClick={() => scrollToSection('contact')}
@@ -123,10 +129,34 @@ export default function Navbar({ activeSection }: NavbarProps) {
               <span>Inquire</span>
               <ArrowUpRight className="w-3 h-3" />
             </motion.button>
+
+            {/* Theme Toggle Button */}
+            <motion.button
+              id="theme-toggle-desktop"
+              onClick={onToggleTheme}
+              className="p-1.5 border border-charcoal/20 hover:border-gold text-charcoal/80 hover:text-gold transition-colors duration-300 cursor-pointer focus:outline-none rounded-none flex items-center justify-center ml-2"
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              aria-label="Toggle Theme"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.65 }}
+            >
+              {theme === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+            </motion.button>
           </nav>
 
-          {/* Mobile Menu Trigger */}
-          <div className="md:hidden flex items-center">
+          {/* Mobile Menu & Theme Toggle Trigger */}
+          <div className="md:hidden flex items-center space-x-3">
+            <button
+              id="theme-toggle-mobile"
+              onClick={onToggleTheme}
+              className="p-1.5 border border-charcoal/15 text-charcoal hover:text-gold transition-colors duration-300 focus:outline-none rounded-none flex items-center justify-center cursor-pointer"
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+
             <button
               id="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

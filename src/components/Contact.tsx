@@ -92,19 +92,19 @@ export default function Contact({ prefilledArtwork, onClearPrefill }: ContactPro
               </h3>
 
               <div className="space-y-4 font-sans text-xs text-charcoal/70">
-                <div className="flex items-center space-x-3.5 p-4 bg-[#0d0d0d]/40 border border-white/5 hover:bg-[#0d0d0d] transition-all duration-300">
+                <div className="flex items-center space-x-3.5 p-4 bg-card-bg/40 border border-border-subtle hover:bg-card-bg transition-all duration-300">
                   <Mail className="w-4 h-4 text-gold shrink-0" />
                   <a href="mailto:studio@elenarostova.com" className="hover:text-gold transition-colors">
                     studio@elenarostova.com
                   </a>
                 </div>
 
-                <div className="flex items-center space-x-3.5 p-4 bg-[#0d0d0d]/40 border border-white/5 hover:bg-[#0d0d0d] transition-all duration-300">
+                <div className="flex items-center space-x-3.5 p-4 bg-card-bg/40 border border-border-subtle hover:bg-card-bg transition-all duration-300">
                   <Phone className="w-4 h-4 text-gold shrink-0" />
                   <span>+420 224 811 590</span>
                 </div>
 
-                <div className="flex items-center space-x-3.5 p-4 bg-[#0d0d0d]/40 border border-white/5 hover:bg-[#0d0d0d] transition-all duration-300">
+                <div className="flex items-center space-x-3.5 p-4 bg-card-bg/40 border border-border-subtle hover:bg-card-bg transition-all duration-300">
                   <MapPin className="w-4 h-4 text-gold shrink-0" />
                   <span>Prague Studio &bull; Holešovice District, CZ</span>
                 </div>
@@ -141,7 +141,7 @@ export default function Contact({ prefilledArtwork, onClearPrefill }: ContactPro
                     placeholder="your.email@address.com"
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
-                    className="flex-grow px-3 py-2.5 bg-[#151515] border border-white/5 text-xs focus:outline-none focus:border-gold rounded-none text-charcoal"
+                    className="flex-grow px-3 py-2.5 bg-card-darker border border-border-subtle text-xs focus:outline-none focus:border-gold rounded-none text-charcoal"
                   />
                   <button
                     id="newsletter-submit-btn"
@@ -168,7 +168,7 @@ export default function Contact({ prefilledArtwork, onClearPrefill }: ContactPro
           </div>
 
           {/* Form Area (Right - 8 Cols) */}
-          <div className="lg:col-span-8 bg-[#0d0d0d] p-8 md:p-12 border border-white/5 shadow-sm">
+          <div className="lg:col-span-8 bg-card-bg p-8 md:p-12 border border-border-subtle shadow-sm">
             <AnimatePresence mode="wait">
               {!submitSuccess ? (
                 /* Main Inquiry Form */
@@ -194,7 +194,7 @@ export default function Contact({ prefilledArtwork, onClearPrefill }: ContactPro
                         required
                         value={formData.firstName}
                         onChange={handleInputChange}
-                        className="px-4 py-3 bg-[#151515] border border-white/5 text-sm focus:outline-none focus:border-gold focus:bg-[#0d0d0d] text-charcoal rounded-none transition-all duration-300"
+                        className="px-4 py-3 bg-card-darker border border-border-subtle text-sm focus:outline-none focus:border-gold focus:bg-card-bg text-charcoal rounded-none transition-all duration-300"
                         placeholder="John"
                       />
                     </div>
@@ -210,7 +210,7 @@ export default function Contact({ prefilledArtwork, onClearPrefill }: ContactPro
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
-                        className="px-4 py-3 bg-[#151515] border border-white/5 text-sm focus:outline-none focus:border-gold focus:bg-[#0d0d0d] text-charcoal rounded-none transition-all duration-300"
+                        className="px-4 py-3 bg-card-darker border border-border-subtle text-sm focus:outline-none focus:border-gold focus:bg-card-bg text-charcoal rounded-none transition-all duration-300"
                         placeholder="Doe"
                       />
                     </div>
@@ -229,7 +229,7 @@ export default function Contact({ prefilledArtwork, onClearPrefill }: ContactPro
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="px-4 py-3 bg-[#151515] border border-white/5 text-sm focus:outline-none focus:border-gold focus:bg-[#0d0d0d] text-charcoal rounded-none transition-all duration-300"
+                        className="px-4 py-3 bg-card-darker border border-border-subtle text-sm focus:outline-none focus:border-gold focus:bg-card-bg text-charcoal rounded-none transition-all duration-300"
                         placeholder="john.doe@domain.com"
                       />
                     </div>
@@ -244,7 +244,7 @@ export default function Contact({ prefilledArtwork, onClearPrefill }: ContactPro
                         name="subject"
                         value={formData.subject}
                         onChange={handleInputChange}
-                        className="px-4 py-3 bg-[#151515] border border-white/5 text-sm focus:outline-none focus:border-gold focus:bg-[#0d0d0d] text-charcoal rounded-none transition-all duration-300 appearance-none"
+                        className="px-4 py-3 bg-card-darker border border-border-subtle text-sm focus:outline-none focus:border-gold focus:bg-card-bg text-charcoal rounded-none transition-all duration-300 appearance-none"
                       >
                         <option value="Acquisition Inquiry">Original Artwork Acquisition</option>
                         <option value="Private Commission">Bespoke Painting Commission</option>
@@ -265,7 +265,7 @@ export default function Contact({ prefilledArtwork, onClearPrefill }: ContactPro
                       name="artworkInterest"
                       value={formData.artworkInterest}
                       onChange={handleInputChange}
-                      className="px-4 py-3 bg-[#151515] border border-white/5 text-sm focus:outline-none focus:border-gold focus:bg-[#0d0d0d] text-charcoal rounded-none transition-all duration-300"
+                      className="px-4 py-3 bg-card-darker border border-border-subtle text-sm focus:outline-none focus:border-gold focus:bg-card-bg text-charcoal rounded-none transition-all duration-300"
                       placeholder="e.g. Whispers of the Gilded Birch"
                     />
                     {prefilledArtwork && (
@@ -288,7 +288,7 @@ export default function Contact({ prefilledArtwork, onClearPrefill }: ContactPro
                       rows={5}
                       value={formData.message}
                       onChange={handleInputChange}
-                      className="px-4 py-3 bg-[#151515] border border-white/5 text-sm focus:outline-none focus:border-gold focus:bg-[#0d0d0d] text-charcoal rounded-none transition-all duration-300 resize-none"
+                      className="px-4 py-3 bg-card-darker border border-border-subtle text-sm focus:outline-none focus:border-gold focus:bg-card-bg text-charcoal rounded-none transition-all duration-300 resize-none"
                       placeholder="Please introduce yourself, specifying dimensions or framing preferences if inquiry is for custom commissions..."
                     />
                   </div>
@@ -339,7 +339,7 @@ export default function Contact({ prefilledArtwork, onClearPrefill }: ContactPro
                     Studio log coordinate registered
                   </p>
 
-                  <div className="bg-sand p-6 border border-white/5 max-w-md w-full my-8 text-left space-y-3 text-xs font-sans text-charcoal/70">
+                  <div className="bg-sand p-6 border border-border-subtle max-w-md w-full my-8 text-left space-y-3 text-xs font-sans text-charcoal/70">
                     <p>
                       <strong>Inquirer:</strong> {formData.firstName} {formData.lastName}
                     </p>

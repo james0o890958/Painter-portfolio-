@@ -89,7 +89,7 @@ export default function Exhibitions() {
                 <div
                   id={`exh-header-clickable-${exh.id}`}
                   onClick={() => toggleExpand(exh.id)}
-                  className={`p-6 md:p-8 border border-white/5 bg-[#0d0d0d]/80 hover:bg-[#0d0d0d] transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md ${
+                  className={`p-6 md:p-8 border border-border-subtle bg-card-bg/80 hover:bg-card-bg transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md ${
                     isExpanded ? 'ring-1 ring-gold/30 border-gold/30' : ''
                   }`}
                 >
