@@ -181,7 +181,7 @@ export default function CollectionsOverview({ onOpenArtwork }: CollectionsOvervi
                     {COLLECTION_METADATA[selectedCategory].quote}
                   </p>
                   <p className="font-mono text-[9px] text-gold/40 text-right mt-2">
-                    &mdash; Elena Rostova
+                    &mdash; James Ricardo
                   </p>
                 </div>
               </motion.div>

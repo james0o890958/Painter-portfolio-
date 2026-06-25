@@ -1,6 +1,6 @@
 {
-  "name": "Elena Rostova Portfolio",
-  "description": "An elegant, interactive digital portfolio showcasing the expressive, textured oil paintings and art collections of contemporary artist Elena Rostova.",
+  "name": "James Ricardo Portfolio",
+  "description": "An elegant, interactive digital portfolio showcasing the expressive, textured oil paintings and art collections of contemporary artist James Ricardo.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

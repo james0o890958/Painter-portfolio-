@@ -65,7 +65,7 @@ export default function ArtisticPhilosophy() {
                 &ldquo;I do not paint to capture what stands before my eyes. I paint to discover the hidden architecture of silence, memory, and time that frames the human soul.&rdquo;
               </p>
               <div className="border-t border-border-subtle mt-6 pt-4 text-right">
-                <span className="font-mono text-[10px] tracking-widest text-cream/40 uppercase">&mdash; Elena Rostova</span>
+                <span className="font-mono text-[10px] tracking-widest text-cream/40 uppercase">&mdash; James Ricardo</span>
               </div>
             </motion.div>
 

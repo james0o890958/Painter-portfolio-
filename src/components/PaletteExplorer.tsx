@@ -27,7 +27,7 @@ export default function PaletteExplorer() {
             Color Palette & Symbolism
           </h2>
           <p className="font-sans text-xs md:text-sm text-charcoal/60 mt-4 leading-relaxed font-light">
-            Every color on Elena's palette carries a psychological and symbolic burden. Explore her foundational pigments to understand the emotional landscape behind her creations.
+Every color on James Ricardo's palette carries a psychological and symbolic burden. Explore his foundational pigments to understand the emotional landscape behind his creations.
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export default function PaletteExplorer() {
                     {activeColor.quote}
                   </p>
                   <p className="font-mono text-[9px] uppercase tracking-widest text-gold/70 mt-3 text-right">
-                    &mdash; Elena Rostova
+                    &mdash; James Ricardo
                   </p>
                 </motion.div>
               </AnimatePresence>

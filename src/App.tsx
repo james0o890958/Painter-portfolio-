@@ -113,7 +113,7 @@ export default function App() {
       {/* 2. Visual Masterpiece Hero Showcase */}
       <Hero />
 
-      {/* 3. Long-form exploration of Elena Rostova's worldview and creative process */}
+      {/* 3. Long-form exploration of James Ricardo's worldview and creative process */}
       <ArtisticPhilosophy />
 
       {/* 4. bento-grid bento/ledger collection category overview */}
@@ -150,7 +150,7 @@ export default function App() {
           {/* Logo Brand Frame */}
           <div className="flex flex-col">
             <span className="font-serif text-xl tracking-[0.25em] uppercase font-medium text-cream">
-              Elena Rostova
+              James Ricardo
             </span>
             <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-[#f0efe9]/40 mt-1">
               Contemporary Oil Painting &bull; Est. 2018
@@ -187,7 +187,7 @@ export default function App() {
 
         {/* Disclaimer / Credit margin line */}
         <div className="max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-mono tracking-widest text-[#f0efe9]/30">
-          <span>&copy; 2026 ELENA ROSTOVA. ALL RIGHTS RESERVED.</span>
+          <span>&copy; 2026 James Ricardo. ALL RIGHTS RESERVED.</span>
           <span>ORIGINAL OIL PAINTINGS FROM THE PRAGUE WORKSPACE.</span>
         </div>
       </footer>

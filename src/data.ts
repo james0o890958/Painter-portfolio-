@@ -673,7 +673,7 @@ export const PALETTE_COLORS: PaletteColor[] = [
     id: 'prussian-blue',
     name: 'Prussian Blue',
     hex: '#102E4A',
-    symbolicMeaning: 'Depth, melancholy, and oceanic shadows. Elena uses this color as the foundation for night skies, deep water, and the dark architectural forms of cities.',
+    symbolicMeaning: 'Depth, melancholy, and oceanic shadows. James Ricardo uses this color as the foundation for night skies, deep water, and the dark architectural forms of cities.',
     quote: 'Prussian Blue is the color of memories. It holds the shadow of every wave and the weight of night on its shoulders.',
     associatedArtworks: ['distance-between-versions', 'noise-stopped', 'third-watch', 'last-train-summer', 'house-beside-river', 'shadow-owe-light', 'shape-of-regret', 'river-remembers', 'pattern-recognition', 'self-awareness', 'time-pooled-water']
   },
@@ -720,7 +720,7 @@ export const EXHIBITIONS: Exhibition[] = [
     year: '2026',
     date: 'Oct 12 – Nov 30, 2026',
     status: 'upcoming',
-    description: 'A solo retrospective showcasing Elena’s newest landscape and ocean studies, focusing on the sensory relationship between paint texture, light refraction, and physical environment.'
+    description: 'A solo retrospective showcasing James Ricardo’s newest landscape and ocean studies, focusing on the sensory relationship between paint texture, light refraction, and physical environment.'
   },
   {
     id: 'exh-2',
@@ -750,7 +750,7 @@ export const EXHIBITIONS: Exhibition[] = [
     year: '2024',
     date: 'May 02 – Jun 15, 2024',
     status: 'past',
-    description: 'Elenas inaugural US solo show, focusing on the dramatic juxtaposition of restless coastal seascapes and calm, monumental cliffs.'
+    description: 'James Ricardo’s inaugural US solo show, focusing on the dramatic juxtaposition of restless coastal seascapes and calm, monumental cliffs.'
   }
 ];
 
@@ -773,7 +773,7 @@ export const AWARDS: Award[] = [
 ];
 
 export const ARTIST_BIOGRAPHY = {
-  name: 'Elena Rostova',
+  name: 'James Ricardo',
   title: 'Contemporary Painter',
   birthplace: 'Prague, Czech Republic',
   studio: '/src/assets/images/artist_studio_1782318266342.jpg',

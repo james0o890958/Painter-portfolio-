@@ -27,7 +27,7 @@ export default function About() {
               <img
                 id="about-studio-image"
                 src={ARTIST_BIOGRAPHY.studio}
-                alt="Elena Rostova Studio"
+                alt="James Ricardo Studio"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover select-none"
               />

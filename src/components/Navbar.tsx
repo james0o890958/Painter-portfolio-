@@ -86,7 +86,7 @@ export default function Navbar({ activeSection, theme, onToggleTheme }: NavbarPr
             transition={{ duration: 0.6 }}
           >
             <span className="font-serif text-lg md:text-xl tracking-[0.25em] font-medium uppercase text-charcoal group-hover:text-gold transition-colors duration-300">
-              Elena Rostova
+              James Ricardo
             </span>
             <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-charcoal/50 group-hover:text-gold/70 transition-colors duration-300 -mt-0.5">
               Fine Art
